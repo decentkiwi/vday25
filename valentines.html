@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: pink;
+            padding: 50px;
+            overflow: hidden;
+        }
+        h1 {
+            color: red;
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .yes {
+            background-color: red;
+            color: white;
+        }
+        .no {
+            background-color: gray;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will you be my Valentine? ❤️</h1>
+    <div class="buttons">
+        <button class="yes" id="yesButton">Yes</button>
+        <button class="no" id="noButton">No</button>
+    </div>
+    
+    <script>
+        let yesButton = document.getElementById('yesButton');
+        let noButton = document.getElementById('noButton');
+        let size = 20;
+
+        yesButton.addEventListener('click', function() {
+            window.location.href = 'love.html';
+        });
+
+        setInterval(() => {
+            size += 5;
+            yesButton.style.fontSize = size + 'px';
+        }, 1000);
+
+        noButton.addEventListener('click', function() {
+            let yesPos = yesButton.getBoundingClientRect();
+            let noPos = noButton.getBoundingClientRect();
+            
+            yesButton.style.position = 'absolute';
+            noButton.style.position = 'absolute';
+            
+            yesButton.style.top = noPos.top + 'px';
+            yesButton.style.left = noPos.left + 'px';
+            
+            noButton.style.top = yesPos.top + 'px';
+            noButton.style.left = yesPos.left + 'px';
+        });
+    </script>
+</body>
+</html>
